@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-sm-12">               
+        <h3>Deluppdrag*</h3>
+    </div>
+    <div class="col-12 col-md-8">
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Deluppdrag</th>
+                    <th>Uppdrag l&ouml;sning</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="questTriggerList">
+                <tr *ngFor="let tobj of triggerobj">
+                    <td>{{tobj.QuestTriggerId}}</td>
+                    <td>{{tobj.TNamn}}</td>
+                    <td>{{tobj.TValue}}</td>
+                    <td><a href="#" class="text-info" title="Generera kod till frågan" (click)="GenerateCode(tobj)"> Generera</a> | <a href="#" class="text-danger" (click)="DeleteTrigger(tobj)">Ta bort</a><td>
+                        
+                </tr>
+                
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th>
+                        <input type="text" class="form-control" id="cmdTriggerUppdrag" [(ngModel)]="cmdTriggerUppdrag" placeholder="Skriv uppdrag">
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" id="cmdTriggerSvar" [(ngModel)]="cmdTriggerSvar" placeholder="Skriv uppdragssvar" >
+                    </th>
+                    <th> 
+                        <button id="cmdTriggerAdd" (click)="addNewTrigger()" class="btn btn-primary mb-2">L&auml;gg till</button>
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+      </div>
+      
+  </div>
+  <div id="copycodeBlock" class="row" *ngIf="showCodeblock">
+    <div class="col-sm-12">  
+        <strong>Kopiera och klistra in kod:</strong><br>    
+        <code id="copycode">
+           {{excode}}
+        </code>
+        <p class="mt-2">
+            <a href="#" (click)="CopyCode()" class="text-secondary">Kopiera</a>
+        </p>
+    </div>
+  </div>

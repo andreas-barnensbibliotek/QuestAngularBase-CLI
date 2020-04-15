@@ -1,0 +1,136 @@
+<div class="row p-2">
+    <div class="col">
+        <h2>Uppdragsadmin</h2>
+    </div>            
+  </div>  
+  <div class="row p-2" style="background-color:#eee;"> 
+    <div class="col-sm-12 col-md-10">          
+        <h3>Bokm&auml;rkelse</h3>
+        <label class="form-check-label" >{{QuestObj.AwardGroupId}}</label>
+    </div>            
+    <div class="col-sm-12 col-md-2 text-right">
+        <div class="form-check m-2">
+            <input type="checkbox" #chkActive id="chkActive" class="form-check-input" id="Active"  [checked]="QuestObj.Active" (change)="fixactiveToInt(chkActive.checked)">
+            <label class="form-check-label" for="Active">Aktiv</label>
+        </div>
+    </div>    
+        
+    <div class="col-sm-12 col-md-8">
+        
+        <div class="form-group">
+            <label for="AwardName">Bokm&auml;rkelsenamn* </label>
+            <input type="text" [(ngModel)]="QuestObj.AwardName" class="form-control" id="AwardName" aria-describedby="AwardNamelHelp" placeholder="Ange medaljnamn">
+            <small id="AwardNamelHelp" class="form-text text-muted ml-1"><i class="far fa-question-circle"></i> Detta &auml;r bokm&auml;rkelsenamnet (namnet p&aring; medaljen) som ska synas i scoreboard</small>
+          
+          </div>
+        <div class="form-group">                    
+            <label for="AwardBeskrivning">Bokm&auml;rkelsebeskrivning*</label>
+            <input type="text" [(ngModel)]="QuestObj.AwardBeskrivning" class="form-control" id="AwardBeskrivning" aria-describedby="AwardBeskrivninglHelp" placeholder="Ange medaljbeskrivning">
+            <small id="AwardBeskrivninglHelp" class="form-text text-muted ml-1"><i class="far fa-question-circle"></i> Detta &auml;r Bokm&auml;rkelsebeskrivningen som synas i alt-texten</small>                 
+        </div>
+        <div class="form-group">                    
+            <label for="BadgeSrc">Bokm&auml;rke (badge)*</label>
+            <input type="text" [(ngModel)]="QuestObj.BadgeSrc" class="form-control" id="BadgeSrc" aria-describedby="BadgeSrcHelp" placeholder="Bokm&auml;rkes ikon">
+            <small id="BadgeSrcHelp" class="form-text text-muted ml-1"><i class="far fa-question-circle"></i> Url/src till bokm&auml;rketsikon</small>                 
+        </div>     
+              
+    </div>   
+    <div class="col-sm-12 col-md-4 text-center">
+        <img id="showbadgeImage" [src]="QuestObj.BadgeSrc"/>
+    </div>
+  
+    <div class="col-sm-12 col-md-4 ">
+        <div class="form-group  ">                    
+            <label for="Level">Bokm&auml;rkelse level</label>
+            <input type="text" [(ngModel)]="QuestObj.Level"  class="form-control col-2" id="Level" aria-describedby="LevelHelp" value="1">
+            <small id="LevelHelp" class="form-text text-muted ml-1"><i class="far fa-question-circle"></i> Ange vilken level bokm&auml;rket avser. </small>
+        </div>
+    </div>  
+    <div class="col-sm-12 col-md-4 ">
+        <div class="form-group ">                    
+            <label for="Occurs">Max level</label>
+            <input type="text" [(ngModel)]="QuestObj.Occures" class="form-control col-2" id="Occurs" aria-describedby="OccursHelp" value="1">
+            <small id="OccursHelp" class="form-text text-muted ml-1"><i class="far fa-question-circle"></i> Ange max level f&ouml;r bokm&auml;rket. inneb&auml;r hur m&aring;nga levels man m&aring;ste g&ouml;ra innan man n&aring;r max.</small>
+        </div>
+    </div>                     
+    <div class="col-sm-12 col-md-4 ">                
+        <div class="form-group ">                    
+            <label for="AwardOccures">Kan tilldelas (Antal ggr)</label>
+            <input type="text" [(ngModel)]="QuestObj.AwardOccures" class="form-control col-2" id="AwardOccures" aria-describedby="AwardOccuresHelp" value="2" >
+            <small id="AwardOccuresHelp" class="form-text text-muted ml-1"><i class="far fa-question-circle"></i>Anger vart Bokm&auml;rket skall synas p&aring; scoreboard. (0 =Bokm&auml;rket kan tilldelas alla hur m&aring;nga g&aring;nger som helst, 1 bara en person (ex hightscore i quizer) (AwardOccures))</small>
+        </div>                               
+    </div>
+     
+    <div class="col-sm-12 col-md-4 ">
+        <div class="form-group ">                    
+            <label for="PointEarned">Po&auml;ng per g&aring;ng</label>
+            <input type="text" [(ngModel)]="QuestObj.PointEarned" class="form-control col-2" id="PointEarned" aria-describedby="PointEarnedHelp" value="1" >
+            <small id="PointEarnedsHelp" class="form-text text-muted ml-1"><i class="far fa-question-circle"></i> Hur m&aring;nga po&auml;ng man f&aring;r varje g&aring;ng man klarar uppdraget</small>
+        </div>                
+    </div>         
+    <div class="col-sm-12 col-md-4 ">
+        <div class="form-group ">                    
+            <label for="TotLevelUp">Po&auml;ng f&ouml;r att: levelup</label>
+            <input type="text" [(ngModel)]="QuestObj.TotLevelUp"  class="form-control col-2" id="TotLevelUp" aria-describedby="TotLevelUpHelp" value="1">
+            <small id="TotLevelUpHelp" class="form-text text-muted ml-1"><i class="far fa-question-circle"></i> Ange hur m&aring;nga po&auml;ng man m&aring;ste n&aring; f&ouml;r att g&aring; upp 1 level. </small>
+        </div>                
+    </div>
+  
+    <div class="col-sm-12 col-md-4 ">               
+        <div class="form-group">
+            <label for="bibblomoneyID">bibblomoney bel&ouml;ning</label>
+            <select id="bibblomoneyID" [(ngModel)]="QuestObj.BibblomoneyEarnedID" class="form-control col-4">
+              <option value="1">50</option>
+              <option value="2">100</option>
+              <option value="3">200</option>
+              <option value="4">500</option>
+              <option value="5">1000</option>
+              <option value="6">1500</option>
+              <option value="7">3000</option>
+              <option value="8">5000</option>
+              <option value="9">7500</option>
+              <option value="10">10000</option>
+              <option value="11">15000</option>
+              <option value="12">20000</option>
+            </select>
+          </div>
+    </div>
+  </div>
+  
+  <div class="row p-2 mx-n2">
+     <div class="col-sm-12 ">          
+        <h3>Uppdrag</h3>
+    </div>                       
+    <div class="col-sm-12 ">               
+        
+        <div class="form-group">
+            <label for="Uppdragsnamn">Huvuduppdrag*</label>
+            <input type="text" [(ngModel)]="QuestObj.Uppdragsnamn"  class="form-control" id="Uppdragsnamn" aria-describedby="UppdragsnamnHelp" placeholder="Ange huvuduppdragets namn">
+            <small id="UppdragsnamnHelp" class="form-text text-muted ml-1"><i class="far fa-question-circle"></i> Detta &auml;r huvuduppdragets rubrik/namn</small>
+          </div>
+          <div class="form-group">                    
+            <label for="Uppdragsbeskrivning">Huvuduppdragsbeskrivning*</label>
+            <textarea class="form-control" [(ngModel)]="QuestObj.Uppdragsbeskrivning"  id="Uppdragsbeskrivning" rows="5"></textarea>
+            <small id="UppdragsbeskrivningHelp" class="form-text text-muted ml-1"><i class="far fa-question-circle"></i> Detta &auml;r huvuduppdragsbeskrivningen</small>                 
+          </div>   
+          
+    </div>
+  </div>    
+  
+  <aj-quest-trigger [QuestObj]="QuestObj" [badgeImg]="QuestObj.BadgeSrc" [triggerobj]="QuestObj.QuestSubQuestList" (triggerChange)="reloaddata()"></aj-quest-trigger>          
+  
+  <div class="row mt-4 mb-4">
+    
+    <div class="col-sm-8 ">
+        <hr>
+        <button type="button" class="btn btn-success btn-lg m-1" (click)="SparaQuestCloseEvent()">Spara och st&auml;ng</button>
+        <button type="button" class="btn btn-success btn-lg m-1" (click)="SparaQuestEvent()">Spara</button>        
+        <button type="button" class="btn btn-secondary btn-lg m-1" (click)="CloseQuest()">Tillbaka</button>
+        <h4 class="text-success">{{Savetext}}</h4>
+     </div>   
+     <div class="col-sm-4 text-right">
+        <hr>
+         <button type="button" class="btn btn-danger btn-lg m-1" (click)="deleteQuest()">Ta bort</button>
+    </div>
+  </div>
+  
